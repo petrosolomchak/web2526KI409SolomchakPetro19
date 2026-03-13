@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Lab 2 - Solomchak Petro</title>
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; text-align: center; background: #f4f7f6; padding: 40px; }
+        .container { background: white; max-width: 400px; margin: auto; padding: 25px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: #333; }
+        .led-circle { width: 80px; height: 80px; border-radius: 50%; margin: 20px auto; background: #bbb; border: 4px solid #333; transition: 0.3s; }
+        .led-on { background: #4caf50; box-shadow: 0 0 20px #4caf50; }
+        .btn { padding: 12px 24px; font-size: 18px; cursor: pointer; border: none; border-radius: 8px; background: #1a73e8; color: white; }
+        #status { margin-top: 15px; color: #666; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Керування LED</h2>
+        <div id="led" class="led-circle"></div>
+        <button class="btn" onclick="toggleLED()">Увімкнути/Вимкнути</button>
+        <p id="status">Статус: Підключення...</p>
+    </div>
+
+    <script>
+        // Отримання статусу з сервера (GET)
+        async function getStatus() {
+            try {
+                const response = await fetch('/api/status');
+                const data = await response.json();
+                updateUI(data.led_on);
+            } catch (err) { console.error("Помилка зв'язку"); }
+        }
+
+        // Керування через POST запит
+        async function toggleLED() {
+            try {
+                const response = await fetch('/api/control', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ command: 'toggle' })
+                });
+                const data = await response.json();
+                updateUI(data.led_on);
+            } catch (err) { console.error("Помилка відправки"); }
+        }
+
+        function updateUI(isOn) {
+            const led = document.getElementById('led');
+            const statusText = document.getElementById('status');
+            led.className = isOn ? 'led-circle led-on' : 'led-circle';
+            statusText.innerText = "Статус: " + (isOn ? "УВІМКНЕНО" : "ВИМКНЕНО");
+        }
+
+        // Опитування кожні 5 секунд
+        setInterval(getStatus, 5000);
+        getStatus();
+    </script>
+</body>
+</html>
