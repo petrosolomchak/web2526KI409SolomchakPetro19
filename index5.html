@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Secure Admin Panel - Solomchak Petro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: 'Segoe UI', sans-serif; background: #1a1a1a; color: #e0e0e0; text-align: center; padding: 50px; }
+        .secure-box { background: #2d2d2d; max-width: 500px; margin: auto; padding: 30px; border-radius: 15px; border: 2px solid #4caf50; box-shadow: 0 0 20px rgba(76, 175, 80, 0.2); }
+        h1 { color: #4caf50; }
+        .status-badge { display: inline-block; padding: 5px 15px; background: #4caf50; color: white; border-radius: 20px; font-size: 0.8em; margin-bottom: 20px; }
+        p { line-height: 1.6; }
+        .warning { color: #ff9800; font-size: 0.9em; margin-top: 20px; border-top: 1px solid #444; padding-top: 10px; }
+    </style>
+</head>
+<body>
+    <div class="secure-box">
+        <div class="status-badge">HTTPS ЗАХИЩЕНО</div>
+        <h1>Панель Адміністратора</h1>
+        <p>Вітаємо, <strong>Соломчак Петро</strong>!</p>
+        <p>Ви успішно пройшли автентифікацію. Ця сторінка передається через зашифрований канал TLS/SSL[cite: 12, 270].</p>
+        
+        <div class="warning">
+            Примітка: Дані доступу (Basic Auth) тепер зашифровані всередині HTTPS трафіку, що робить їх недоступними для перехоплення[cite: 274, 275].
+        </div>
+    </div>
+</body>
+</html>
