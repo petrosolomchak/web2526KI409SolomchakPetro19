@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Wi-Fi Setup - Solomchak Petro</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body { font-family: sans-serif; background: #f4f4f4; padding: 20px; text-align: center; }
+        .box { background: white; padding: 20px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); max-width: 300px; margin: auto; }
+        input { width: 90%; padding: 10px; margin: 10px 0; border: 1px solid #ccc; border-radius: 5px; }
+        button { width: 100%; padding: 10px; background: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Налаштування Wi-Fi</h2>
+        <form action="/save" method="POST">
+            <input type="text" name="ssid" placeholder="Назва мережі (SSID)" required>
+            <input type="password" name="password" placeholder="Пароль" required>
+            <button type="submit">Зберегти та підключити</button>
+        </form>
+    </div>
+</body>
+</html>
